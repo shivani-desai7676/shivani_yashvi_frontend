@@ -17,7 +17,7 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
     setLoading(true); // Start loading
 
     try {
-      const res = await axios.post(`${API_URL}/api/auth/verify-otp`, {
+      const res = await axios.post(`${API_URL}/api/admin/verify-otp`, {
   email,
   otp,
   password
