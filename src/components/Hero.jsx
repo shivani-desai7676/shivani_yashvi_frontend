@@ -26,10 +26,7 @@ export default function Hero({ children, goToLogin, goToRegister, goToAdmin, set
 
         <nav className="nav">
           {/* Navigation Links */}
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Work</a>
-          <a href="#">Info</a>
+        
 
           {/* LOGIN OR PROFILE BUTTON */}
           {loggedIn ? (

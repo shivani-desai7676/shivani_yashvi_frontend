@@ -22,7 +22,7 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
     setLoading(true); // Show loading state
 
     try {
-      const res = await axios.post(`${API_URL}/api/auth/send-otp`, {
+     await axios.post(`${API_URL}/api/auth/send-otp`, {
   name,
   email,
 });
