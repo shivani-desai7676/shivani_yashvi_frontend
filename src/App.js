@@ -8,7 +8,6 @@ import VerifyOtp from "./components/VerifyOtp";
 import Login from "./components/Login";
 import LoginOtp from "./components/LoginOtp";
 import Dashboard from "./components/Dashboard";
-import UserActivity from "./components/UserActivity";
 
 /* ADMIN COMPONENTS */
 import AdminLogin from "./components/admin/AdminLogin";
@@ -18,8 +17,9 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 function App() {
   const [step, setStep] = useState("splash");
   const [email, setEmail] = useState("");
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [adminEmail, setAdminEmail] = useState(localStorage.getItem("admin") || "");
+  const [adminEmail, setAdminEmail] = useState(
+    localStorage.getItem("admin") || ""
+  );
 
   /* SPLASH SCREEN */
   useEffect(() => {
@@ -30,6 +30,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  /* SPLASH */
   if (step === "splash") return <SplashScreen />;
 
   /* USER DASHBOARD */
@@ -54,7 +55,7 @@ function App() {
     );
   }
 
-  /* ADMIN OTP VERIFICATION */
+  /* ADMIN OTP */
   if (step === "admin-otp") {
     return (
       <AdminOtp
@@ -67,6 +68,7 @@ function App() {
     );
   }
 
+  /* MAIN UI */
   return (
     <Hero
       setStep={setStep}
@@ -106,9 +108,10 @@ function App() {
         <LoginOtp
           email={email}
           onVerified={(jwtToken) => {
-            // store token after successful login
+            // ✅ Store token in localStorage
             localStorage.setItem("token", jwtToken);
-            setToken(jwtToken);
+
+            // ❌ removed setToken (no longer needed)
             setStep("dashboard");
           }}
         />
